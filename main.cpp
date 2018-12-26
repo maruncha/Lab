@@ -11,11 +11,15 @@ int main()
 	scanf("%c", &t);
 	do
 	{
+		if(t == ' '){
+			scanf("%c", &t);
+			continue;	
+		}
 		if(t == '(' || t == '[' || t == '{')
 			open.push(t);
 		else
 		{	
-			if((int)t - (int)open.top() == 1 || (int)t - (int)open.top() == 2){
+			if(!open.empty() && ((int)t - (int)open.top() == 1 || (int)t - (int)open.top() == 2)){
 				open.pop();
 				scanf("%c", &t);
 				continue;
